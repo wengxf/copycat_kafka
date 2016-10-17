@@ -18,5 +18,4 @@ Java SDK 要求 JDK 版本 1.7 及以上
 本项目为示例项目工程。
 ```
 
-###
-开发者：包德康
+### 开发者：[包德康](mailto:sb_xiaobao@sina.com)
