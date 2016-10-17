@@ -111,7 +111,7 @@ public class KafkaServer {
 			kafkaController = new KafkaController();
 			kafkaController.startup();
 			
-			apis = new KafkaApis();
+//			apis = new KafkaApis();
 			
 			consumerCoordinator = new GroupCoordinator();
 			consumerCoordinator.startup();
