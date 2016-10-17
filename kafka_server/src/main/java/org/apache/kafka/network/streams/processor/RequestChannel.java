@@ -1,8 +1,12 @@
 package org.apache.kafka.network.streams.processor;
 
+import java.beans.FeatureDescriptor;
 import java.net.InetAddress;
 import java.nio.ByteBuffer;
+import java.util.Map;
 
+import org.apache.kafka.api.RequestOrResponse;
+import org.apache.kafka.common.protocol.ApiKeys;
 import org.apache.kafka.common.protocol.SecurityProtocol;
 import org.apache.kafka.common.security.auth.KafkaPrincipal;
 
@@ -37,6 +41,8 @@ public class RequestChannel {
 		private SecurityProtocol securityProtocol;
 		
 		public Short requestId;
+		
+		private Map<Short, RequestOrResponse> keyToNameAndDeserializerMap;
 		public Request(int processor, String connectionId, Session session, ByteBuffer buffer, Long startTimeMs,
 				SecurityProtocol securityProtocol) {
 			this.processor = processor;

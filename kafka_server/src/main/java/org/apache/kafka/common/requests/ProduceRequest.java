@@ -14,7 +14,6 @@ import org.apache.kafka.common.protocol.ProtoUtils;
 import org.apache.kafka.common.protocol.types.Schema;
 import org.apache.kafka.common.protocol.types.Struct;
 import org.apache.kafka.common.record.Record;
-import org.apache.kafka.common.requests.ProduceResponse.PartitionResponse;
 import org.apache.kafka.common.utils.CollectionUtils;
 
 /**
@@ -85,10 +84,6 @@ public class ProduceRequest extends AbstractRequest{
 		this.partitionRecords = partitionRecords;
 	}
 	
-	public static ProduceRequest parse(ByteBuffer buffer, int versionId){
-		return null;
-	}
-
 	@Override
 	public AbstractRequestResponse getErrorResponse(int versionId, Throwable e) {
 		if(acks == 0){
@@ -115,5 +110,25 @@ public class ProduceRequest extends AbstractRequest{
                     versionId, this.getClass().getSimpleName(), ProtoUtils.latestVersion(ApiKeys.PRODUCE.id)));
 		}
 		return null;
+	}
+	
+	public short getAcks() {
+		return acks;
+	}
+	
+	public int getTimeout() {
+		return timeout;
+	}
+	
+	public Map<TopicPartition, ByteBuffer> getPartitionRecords() {
+		return partitionRecords;
+	}
+	
+	public static ProduceRequest parse(ByteBuffer buffer, int versionId){
+		return new ProduceRequest(ProtoUtils.parseRequest(ApiKeys.PRODUCE.id, versionId, buffer));
+	}
+	
+	public static ProduceRequest parse(ByteBuffer buffer){
+		return new ProduceRequest(CURRENT_SHCEMA.read(buffer));
 	}
 }

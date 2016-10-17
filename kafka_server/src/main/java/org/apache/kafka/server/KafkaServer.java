@@ -108,7 +108,7 @@ public class KafkaServer {
 			replicaManager = new ReplicaManager();
 			replicaManager.startup();
 			
-			kafkaController = new KafkaController();
+			kafkaController = new KafkaController(config, zkUtils);
 			kafkaController.startup();
 			
 //			apis = new KafkaApis();

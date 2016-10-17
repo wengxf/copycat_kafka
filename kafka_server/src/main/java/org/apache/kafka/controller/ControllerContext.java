@@ -18,6 +18,8 @@ public class ControllerContext {
 	public ControllerContext(ZkUtils zkUtils, int zkSessionTimeout) {
 		this.zkUtils = zkUtils;
 		this.zkSesstionTimeout = zkSessionTimeout;
+		
+		controllerLock = new ReentrantLock();
 	}
 	
 	

@@ -1,10 +1,10 @@
 package org.apache.kafka.controller;
 
+import org.apache.kafka.ZkUtils;
 import org.apache.kafka.common.metrics.Metrics;
 import org.apache.kafka.common.utils.Time;
 import org.apache.kafka.server.BrokerState;
 import org.apache.kafka.server.KafkaConfig;
-import org.apache.zookeeper.ZKUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +20,7 @@ public class KafkaController {
 	private static final Logger logger = LoggerFactory.getLogger(KafkaController.class);
 	
 	private KafkaConfig config;
-	private ZKUtil zkUtil;
+	private ZkUtils zkUtils;
 	private BrokerState brokerState;
 	private Time time;
 	private Metrics metrics;
@@ -29,9 +29,11 @@ public class KafkaController {
 	private boolean isRunning;
 	
 	
-	public KafkaController() {
+	public KafkaController(KafkaConfig config, ZkUtils zkUtils) {
+		this.config = config;
+		this.zkUtils = zkUtils;
 		this.isRunning = true;
-//		this.controllerContext = new ControllerContext(zkUtil, config.zkSessionTimeoutMs);
+		this.controllerContext = new ControllerContext(zkUtils, config.zkSessionTimeoutMs);
 	}
 	
 	public void startup(){

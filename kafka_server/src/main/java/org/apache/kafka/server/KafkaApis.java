@@ -37,6 +37,6 @@ public class KafkaApis {
 	}
 	
 	private void handleProducerRequest(RequestChannel.Request request){
-		
+		System.out.println("处理producer");
 	}
 }
