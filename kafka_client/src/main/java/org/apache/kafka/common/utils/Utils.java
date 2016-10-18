@@ -698,10 +698,5 @@ public class Utils {
         if (exception != null)
             throw exception;
     }
-    
-    public static void main(String[] args) throws FileNotFoundException, IOException {
-		Properties props = Utils.loadProps("server.properties");
-		System.out.println(props.getProperty("broker.id"));
-	}
 
 }

@@ -13,6 +13,7 @@
 
 package org.apache.kafka.clients;
 
+import org.apache.kafka.common.protocol.SecurityProtocol;
 import org.apache.kafka.common.utils.Utils;
 
 import java.util.ArrayList;
@@ -75,8 +76,8 @@ public class CommonClientConfigs {
 
     private static List<String> nonTestingSecurityProtocolNames() {
         List<String> names = new ArrayList<>();
-//        for (SecurityProtocol protocol : SecurityProtocol.nonTestingValues())
-//            names.add(protocol.name);
+        for (SecurityProtocol protocol : SecurityProtocol.nonTestingValues())
+            names.add(protocol.name);
         return names;
     }
 

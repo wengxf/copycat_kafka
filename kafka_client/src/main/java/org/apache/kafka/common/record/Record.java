@@ -18,6 +18,7 @@ package org.apache.kafka.common.record;
 
 import java.nio.ByteBuffer;
 
+import org.apache.kafka.common.utils.Crc32;
 import org.apache.kafka.common.utils.Utils;
 
 
@@ -202,40 +203,38 @@ public final class Record {
      * Compute the checksum of the record from the record contents
      */
     public static long computeChecksum(ByteBuffer buffer, int position, int size) {
-//        Crc32 crc = new Crc32();
-//        crc.update(buffer.array(), buffer.arrayOffset() + position, size);
-//        return crc.getValue();
-    	return 0;
+        Crc32 crc = new Crc32();
+        crc.update(buffer.array(), buffer.arrayOffset() + position, size);
+        return crc.getValue();
     }
 
     /**
      * Compute the checksum of the record from the attributes, key and value payloads
      */
     public static long computeChecksum(long timestamp, byte[] key, byte[] value, CompressionType type, int valueOffset, int valueSize) {
-//        Crc32 crc = new Crc32();
-//        crc.update(CURRENT_MAGIC_VALUE);
-//        byte attributes = 0;
-//        if (type.id > 0)
-//            attributes = (byte) (attributes | (COMPRESSION_CODEC_MASK & type.id));
-//        crc.update(attributes);
-//        crc.updateLong(timestamp);
-//        // update for the key
-//        if (key == null) {
-//            crc.updateInt(-1);
-//        } else {
-//            crc.updateInt(key.length);
-//            crc.update(key, 0, key.length);
-//        }
-//        // update for the value
-//        if (value == null) {
-//            crc.updateInt(-1);
-//        } else {
-//            int size = valueSize >= 0 ? valueSize : (value.length - valueOffset);
-//            crc.updateInt(size);
-//            crc.update(value, valueOffset, size);
-//        }
-//        return crc.getValue();
-    	return 0;
+        Crc32 crc = new Crc32();
+        crc.update(CURRENT_MAGIC_VALUE);
+        byte attributes = 0;
+        if (type.id > 0)
+            attributes = (byte) (attributes | (COMPRESSION_CODEC_MASK & type.id));
+        crc.update(attributes);
+        crc.updateLong(timestamp);
+        // update for the key
+        if (key == null) {
+            crc.updateInt(-1);
+        } else {
+            crc.updateInt(key.length);
+            crc.update(key, 0, key.length);
+        }
+        // update for the value
+        if (value == null) {
+            crc.updateInt(-1);
+        } else {
+            int size = valueSize >= 0 ? valueSize : (value.length - valueOffset);
+            crc.updateInt(size);
+            crc.update(value, valueOffset, size);
+        }
+        return crc.getValue();
     }
 
 
@@ -243,8 +242,7 @@ public final class Record {
      * Compute the checksum of the record from the record contents
      */
     public long computeChecksum() {
-    	return 0;
-//        return computeChecksum(buffer, MAGIC_OFFSET, buffer.limit() - MAGIC_OFFSET);
+        return computeChecksum(buffer, MAGIC_OFFSET, buffer.limit() - MAGIC_OFFSET);
     }
 
     /**

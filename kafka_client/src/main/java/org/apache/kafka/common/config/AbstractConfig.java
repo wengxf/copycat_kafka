@@ -12,6 +12,13 @@
  */
 package org.apache.kafka.common.config;
 
+import org.apache.kafka.common.Configurable;
+import org.apache.kafka.common.KafkaException;
+import org.apache.kafka.common.config.types.Password;
+import org.apache.kafka.common.utils.Utils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -19,13 +26,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import org.apache.kafka.common.Configurable;
-import org.apache.kafka.common.KafkaException;
-import org.apache.kafka.common.config.types.Password;
-import org.apache.kafka.common.utils.Utils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * A convenient base class for configurations to extend.
@@ -67,7 +67,7 @@ public class AbstractConfig {
         this.originals = new HashMap<>();
         this.used = Collections.synchronizedSet(new HashSet<String>());
     }
-    
+
     protected Object get(String key) {
         if (!values.containsKey(key))
             throw new ConfigException(String.format("Unknown configuration '%s'", key));
@@ -84,11 +84,11 @@ public class AbstractConfig {
     }
 
     public Integer getInt(String key) {
-        return (Integer)get(key);
+        return (Integer) get(key);
     }
 
     public Long getLong(String key) {
-        return (Long)get(key);
+        return (Long) get(key);
     }
 
     public Double getDouble(String key) {
@@ -101,7 +101,7 @@ public class AbstractConfig {
     }
 
     public Boolean getBoolean(String key) {
-        return Boolean.valueOf((String)get(key));
+        return (Boolean) get(key);
     }
 
     public String getString(String key) {
