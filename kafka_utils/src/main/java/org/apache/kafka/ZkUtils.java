@@ -20,18 +20,18 @@ import org.apache.zookeeper.data.ACL;
  */
 public class ZkUtils {
 
-	private static final String ConsumersPath = "/consumers";
-	private static final String BrokerIdsPath = "/brokers/ids";
-	private static final String BrokerTopicsPath = "/brokers/topics";
-	private static final String ControllerPath = "/controller";
-	private static final String ControllerEpochPath = "/controller_epoch";
-	private static final String ReassignPartitionsPath = "/admin/reassign_partitions";
-	private static final String DeleteTopicsPath = "/admin/delete_topics";
-	private static final String PreferredReplicaLeaderElectionPath = "/admin/preferred_replica_election";
-	private static final String BrokerSequenceIdPath = "/brokers/seqid";
-	private static final String IsrChangeNotificationPath = "/isr_change_notification";
-	private static final String EntityConfigPath = "/config";
-	private static final String EntityConfigChangesPath = "/config/changes";
+	public static final String ConsumersPath = "/consumers";
+	public static final String BrokerIdsPath = "/brokers/ids";
+	public static final String BrokerTopicsPath = "/brokers/topics";
+	public static final String ControllerPath = "/controller";
+	public static final String ControllerEpochPath = "/controller_epoch";
+	public static final String ReassignPartitionsPath = "/admin/reassign_partitions";
+	public static final String DeleteTopicsPath = "/admin/delete_topics";
+	public static final String PreferredReplicaLeaderElectionPath = "/admin/preferred_replica_election";
+	public static final String BrokerSequenceIdPath = "/brokers/seqid";
+	public static final String IsrChangeNotificationPath = "/isr_change_notification";
+	public static final String EntityConfigPath = "/config";
+	public static final String EntityConfigChangesPath = "/config/changes";
 	
 	public ZkClient zkClient;
 	private ZkConnection zkConnection;

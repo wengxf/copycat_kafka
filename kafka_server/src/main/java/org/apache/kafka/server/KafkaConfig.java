@@ -156,8 +156,10 @@ public class KafkaConfig extends AbstractConfig{
   public static final String MetricSampleWindowMsProp = CommonClientConfigs.METRICS_SAMPLE_WINDOW_MS_CONFIG;
   
   /** ********* Metric Configuration **************/
-  public final int metricNumSamples = getInt(KafkaConfig.MetricNumSamplesProp) == null ? 2 : getInt(KafkaConfig.MetricNumSamplesProp);
-  public final long metricSampleWindowMs = getLong(KafkaConfig.MetricSampleWindowMsProp) == null ? 30000 : getLong(KafkaConfig.MetricSampleWindowMsProp);
+  public final int metricNumSamples = 2;
+//  getInt(KafkaConfig.MetricNumSamplesProp) == null ? 2 : getInt(KafkaConfig.MetricNumSamplesProp);
+  public final long metricSampleWindowMs = 3000; 
+		  //getLong(KafkaConfig.MetricSampleWindowMsProp) == null ? 30000 : getLong(KafkaConfig.MetricSampleWindowMsProp);
 //  public static final String LogMessageFormatVersionProp = LogConfigPrefix + LogConfig.MessageFormatVersionProp;
 //  public static final String LogMessageTimestampTypeProp = LogConfigPrefix + LogConfig.MessageTimestampTypeProp;
 //  public static final String LogMessageTimestampDifferenceMaxMsProp = LogConfigPrefix + LogConfig.MessageTimestampDifferenceMaxMsProp;
@@ -179,6 +181,8 @@ public class KafkaConfig extends AbstractConfig{
   public int NumNetworkThreads = Defaults.NumNetworkThreads;
   public int queuedMaxRequests = Defaults.QueuedMaxRequests;
   public int maxConnectionsPerIp = Defaults.MaxConnectionsPerIp;
+  
+  public Long connectionsMaxIdleMs = 10 * 60 * 1000L;
 //  public int maxConnectionsPerIpOverrides = Defaults.maxConnectionsPerIpOverrides;
 //  public final List<MetricsReporter> metricReporterClasses = getConfiguredInstances("metric.reporters", MetricsReporter.class);
 

@@ -19,19 +19,19 @@
 			<artifactId>kafka_utils</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache</groupId>
 			<artifactId>kafka_common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
-		<dependency>
-			<groupId>org.apache</groupId>
-			<artifactId>kafka_log</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		
+
+		<!-- <dependency> -->
+		<!-- <groupId>org.apache</groupId> -->
+		<!-- <artifactId>kafka_log</artifactId> -->
+		<!-- <version>0.0.1-SNAPSHOT</version> -->
+		<!-- </dependency> -->
+
 		<dependency>
 			<groupId>org.apache</groupId>
 			<artifactId>kafka_client</artifactId>
@@ -63,6 +63,18 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.yammer.metrics</groupId>
+			<artifactId>metrics-core</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
 		</dependency>
 	</dependencies>
 </project>
